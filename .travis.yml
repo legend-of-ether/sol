@@ -1,0 +1,14 @@
+language: node_js
+services:
+  - docker
+before_script:
+  - docker run -d -p 8545:8545 trufflesuite/ganache-cli:latest
+script:
+  - npm run migrate
+  - npm run test
+after_success:
+  - echo "TRAVIS_BRANCH= " $TRAVIS_BRANCH
+  - echo "TRAVIS_PULL_REQUEST_BRANCH= " $TRAVIS_PULL_REQUEST_BRANCH
+  - echo "TRAVIS_EVENT_TYPE= " $TRAVIS_EVENT_TYPE
+  - '[[ $TRAVIS_BRANCH = "master" && $TRAVIS_PULL_REQUEST_BRANCH = "" ]] &&
+    (npm install -g travis-deploy-once && travis-deploy-once "npm run semantic-release")'

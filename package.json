@@ -1,0 +1,46 @@
+{
+  "name": "@legend-of-ether/sol",
+  "version": "0.0.0-development",
+  "description": "Legend of ether",
+  "main": "build/contracts/LegendOfEther.json",
+  "scripts": {
+    "compile": "rimraf build && truffle compile --verbose",
+    "test": "truffle test",
+    "migrate": "truffle migrate",
+    "ganache": "ganache-cli",
+    "ropsten": "rimraf build && npm run migrate -- --network=ropsten",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "prepublishOnly": "npm run ropsten"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/legend-of-ether/sol.git"
+  },
+  "keywords": [],
+  "author": "walter Zalazar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/legend-of-ether/issues"
+  },
+  "homepage": "https://github.com/legend-of-ether/readme",
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "darq-truffle": "^4.1.7-roderik.3",
+    "dotenv": "5.0.1",
+    "ganache-cli": "6.1.0",
+    "rimraf": "^2.6.2",
+    "semantic-release": "15.4.1",
+    "truffle": "4.1.8",
+    "truffle-hdwallet-provider": "0.0.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
