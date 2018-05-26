@@ -53,6 +53,7 @@ contract LegendOfEther {
     
     function removeItem(address _owner, uint _itemId) public ownerOnly {
         mapping(uint => uint) ownerItems = addressToItems[_owner];
+        require(ownerItems[_itemId] > 0);
         ownerItems[_itemId]--;
     }
 }
