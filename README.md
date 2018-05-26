@@ -29,3 +29,5 @@ https://faucet.metamask.io
 # Ropsten Ether scan
 
 https://ropsten.etherscan.io
+
+deploy
