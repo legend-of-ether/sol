@@ -8,9 +8,15 @@ const NULL_ADDRESS = 0
 
 contract('LegendOfEther Construct', addresses => {
 
+  it('should have two items', async () => {
+    const instance = await LegendOfEther.deployed()
+    const itemCount = await instance.getItemCount()
+    assert.equal(itemCount.toString(), '2')
+  })
+
   it('should have a Rusty Sword', async () => {
     const instance = await LegendOfEther.deployed()
-    const items = await instance.items.call(0)
+    const items = await instance.items(0)
     assert.equal(items[0], 'Rusty Sword')
     assert.equal(items[1], '')
     assert.equal(items[2].toString(), '10')
@@ -19,7 +25,7 @@ contract('LegendOfEther Construct', addresses => {
 
   it('should have a Rusty Shield', async () => {
     const instance = await LegendOfEther.deployed()
-    const items = await instance.items.call(1)
+    const items = await instance.items(1)
     assert.equal(items[0], 'Rusty Shield')
     assert.equal(items[1], '')
     assert.equal(items[2].toString(), '0')

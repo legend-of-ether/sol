@@ -36,6 +36,10 @@ contract LegendOfEther {
         createItem(0, 3);
         createItem(1, 3);
     }
+
+    function getItemCount() public view returns(uint count) {
+        return items.length;
+    }
     
     function createItem(uint _itemId, uint _amount) public ownerOnly {
         addressToItems[0][_itemId] += _amount;
